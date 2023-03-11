@@ -55,10 +55,9 @@ const HeroesAddForm = () => {
             return <option>Ошибка загрузки</option>
         }
         
-        // Если фильтры есть, то рендерим их
+        
         if (filters && filters.length > 0 ) {
             return filters.map(({name, label}) => {
-                // Один из фильтров нам тут не нужен
                 // eslint-disable-next-line
                 if (name === 'all')  return;
 

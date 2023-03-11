@@ -1,9 +1,5 @@
 
 
-// import { buttonDelete } from '../actions/index.js';
-// import { useDispatch } from 'react-redux';
-
-
 const HeroesListItem = ({ onDelete, id, name, description, element, ...props}) => {
 
     
@@ -27,10 +23,6 @@ const HeroesListItem = ({ onDelete, id, name, description, element, ...props}) =
             elementClassName = 'bg-warning bg-gradient';
     }
 
-    // const buttonDelete = (id) => {
-    //     dispatch({type: 'BUTTON_DELETE', id: id});
-    // }
-
     
 
 
@@ -48,7 +40,6 @@ const HeroesListItem = ({ onDelete, id, name, description, element, ...props}) =
                 <p className="card-text">{description}</p>
             </div>
             <span className="position-absolute top-0 start-100 translate-middle badge border rounded-pill bg-light">
-                {/* <button onClick={() => buttonDelete(id)} type="button" className="btn-close btn-close" aria-label="Close"></button> */}
                 <button onClick={onDelete} type="button" className="btn-close btn-close" aria-label="Close"></button>
             </span>
         </li>
