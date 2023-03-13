@@ -1,3 +1,13 @@
+
+
+export const fetchHeroes = (request) => (dispatch) => {
+    dispatch(heroesFetching());
+        request("http://localhost:3001/heroes")
+            .then(data => dispatch(heroesFetched(data)))
+            .catch(() => dispatch(heroesFetchingError()))
+}
+
+
 export const heroesFetching = () => {
     return {
         type: 'HEROES_FETCHING'
@@ -43,12 +53,22 @@ export const filtersFetchingError = () => {
     }
 }
 
+/// Simple action 
 export const activeFilterChanged = (filter) => {
     return {
         type: 'ACTIVE_FILTER_CHANGED',
         payload: filter
     }
 }
+/// Action with asynk code to test Redux-thunk. Getting function that takes dispatch. 
+// export const activeFilterChanged = (filter) => (dispatch) => {               /// We can put setTimeout on button but this method is more centralized
+//     setTimeout(() => {
+//         dispatch({
+//             type: 'ACTIVE_FILTER_CHANGED',
+//             payload: filter
+//         })
+//     }, 500)
+// }
 
 export const heroCreated = (hero) => {
     return {
