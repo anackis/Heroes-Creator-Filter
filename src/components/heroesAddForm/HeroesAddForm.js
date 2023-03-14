@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useHttp } from "../../hooks/http.hook";
 import { v4 as uuidv4 } from 'uuid';
 
-import { heroCreated } from "../../actions";
+import { heroCreated } from "../../components/heroesList/heroesSlice";
 
 const HeroesAddForm = () => {
     
@@ -27,7 +27,7 @@ const HeroesAddForm = () => {
             element: heroElement
         }
         request("http://localhost:3001/heroes", "POST", JSON.stringify(newHero))
-        .then(res => console.log(res, 'Отправка успешна'))
+        .then(res => console.log(res, 'Sending is successful'))
         .then(dispatch(heroCreated(newHero)))
         .catch(err => console.log(err));
 
@@ -40,9 +40,9 @@ const HeroesAddForm = () => {
     const renderFilters = (filters, status) => {
         // console.log(filters)
         if (status === "loading") {
-            return <option>Загрузка элементов</option>
+            return <option>Loading elements</option>
         } else if (status === "error") {
-            return <option>Ошибка загрузки</option>
+            return <option>loading error</option>
         }
         
         

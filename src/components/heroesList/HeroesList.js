@@ -4,16 +4,17 @@ import {useHttp} from '../../hooks/http.hook';
 import { useEffect, useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 /// When we click "All" we have rerender every time but we do not have any changes. To avoide this we use createSelector from reselect tot memorize function
-import { createSelector } from 'reselect';     
+import { createSelector } from '@reduxjs/toolkit';     
 
 
-import { fetchHeroes, heroDeleted  } from '../../actions';
+// import { fetchHeroes } from '../../actions';  /// fetchHeroes before was in actions but we recreated it in slice with createAsynk()
+import { heroDeleted, fetchHeroes } from './heroesSlice';
 import HeroesListItem from "../heroesListItem/HeroesListItem";
 import Spinner from '../spinner/Spinner';
 
 const HeroesList = () => {
 
-    /// When we click "All" we have rerender every time but we do not have any changes. To avoide this we use createSelector from reselect tot memorize function
+    /// When we click "All" we have rerender every time but we do not have any changes. To avoide this we use createSelector from reselect to memorize function
     const filteredHeroesSelector = createSelector(
         (state) => state.filters.activeFilter,
         (state) => state.heroes.heroes,
@@ -45,7 +46,7 @@ const HeroesList = () => {
 
     /// New variant that we  create in actions fetchHeroes (With help of redux-thunk)
     useEffect(() => {
-        dispatch(fetchHeroes(request));
+        dispatch(fetchHeroes());
         // eslint-disable-next-line
     }, []);
     /// Old variant when we didnt create in actions fetchHeroes (With help of redux-thunk)
