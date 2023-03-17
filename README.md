@@ -1,4 +1,4 @@
-# Heroes-Creator-Filter
+# Heroes Creator Filter
 
 Project on React + Redux + Redux Toolkit features
 
